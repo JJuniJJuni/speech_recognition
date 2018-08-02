@@ -103,11 +103,11 @@ ENV/
 # idea
 .idea
 
-# data
-data*
-
 # labels
 labels*
 
-# ipynb
-*.ipynb
+# data
+data*
+
+# git
+git
