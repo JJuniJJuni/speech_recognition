@@ -108,3 +108,6 @@ data*
 
 # labels
 labels*
+
+# ipynb
+*.ipynb
