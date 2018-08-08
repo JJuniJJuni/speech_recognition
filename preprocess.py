@@ -58,7 +58,6 @@ def save_data_to_array(path=DATA_PATH, max_len=11):
 def get_train_test(split_ratio=0.6, random_state=42):
     # Get available labels
     labels, indices, _ = get_labels(DATA_PATH)
-
     # Getting first arrays
     X = np.load('./labels/' + labels[0] + '.npy')  # 수정점
     y = np.zeros(X.shape[0])

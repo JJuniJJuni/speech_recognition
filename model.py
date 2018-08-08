@@ -3,12 +3,13 @@ from keras.layers import Conv2D, Dense, Dropout, Flatten, MaxPooling2D
 from keras.models import Sequential
 from keras.utils import to_categorical
 
-import numpy as np
+from predict import load_model
+from predict import predict
+from predict import save_model
 
-from preprocess import get_labels
 from preprocess import get_train_test
 from preprocess import save_data_to_array
-from preprocess import wav2mfcc
+
 
 # Second dimension of the feature is dim2
 feature_dim_2 = 11
@@ -23,7 +24,7 @@ X_train, X_test, y_train, y_test = get_train_test()
 # # Feature dimension
 feature_dim_1 = 20
 channel = 1
-epochs = 50
+epochs = 30
 batch_size = 100
 verbose = 1
 num_classes = 30
@@ -57,14 +58,13 @@ def get_model():
     return model
 
 
-def predict(filepath=DATA_PATH, model=None):
-    sample = wav2mfcc(filepath)
-    sample_reshaped = sample.reshape(1, feature_dim_1, feature_dim_2, channel)
-    return get_labels()[0][
-            np.argmax(model.predict(sample_reshaped))
-    ]
-
-
 model = get_model()
 model.fit(X_train, y_train_hot, batch_size=batch_size, epochs=epochs,
           verbose=verbose, validation_data=(X_test, y_test_hot))
+
+print("before saving, predicted word:",
+      predict('./data/four/1a9afd33_nohash_1.wav', model=model))
+save_model(model)
+loaded = load_model()
+print("after saving and loading, predicted word:",
+      predict('./data/four/1a9afd33_nohash_1.wav', model=model))
