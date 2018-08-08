@@ -103,9 +103,6 @@ ENV/
 # idea
 .idea
 
-# labels
-labels*
-
 # data
 data*
 
