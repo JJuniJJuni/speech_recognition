@@ -22,7 +22,7 @@ def get_labels(path=DATA_PATH):
 
 
 # Handy function to convert wav2mfcc
-def wav2mfcc(file_path, max_len=11):
+def wav2mfcc(file_path, max_len=11):  # sound file to MFCC
     wave, sr = librosa.load(file_path, mono=True, sr=None)
     wave = wave[::3]
     mfcc = librosa.feature.mfcc(wave, sr=16000)
@@ -39,7 +39,7 @@ def wav2mfcc(file_path, max_len=11):
     return mfcc
 
 
-def save_data_to_array(path=DATA_PATH, max_len=11):
+def save_data_to_array(path=DATA_PATH, max_len=11):  # change dataset to '.npy'
     labels, _, _ = get_labels(path)
 
     for label in labels:
@@ -55,7 +55,7 @@ def save_data_to_array(path=DATA_PATH, max_len=11):
         np.save(label + '.npy', mfcc_vectors)
 
 
-def get_train_test(split_ratio=0.6, random_state=42):
+def get_train_test(split_ratio=0.6, random_state=42):  # train CNN model
     # Get available labels
     labels, indices, _ = get_labels(DATA_PATH)
     # Getting first arrays

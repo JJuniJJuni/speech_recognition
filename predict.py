@@ -6,7 +6,7 @@ from preprocess import get_labels
 from preprocess import wav2mfcc
 
 
-def save_model(neural_model):
+def save_model(neural_model):  # save CNN model to json
     # serialize model to JSON
     model_json = neural_model.to_json()
     with open("model.json", "w") as json_file:
@@ -17,7 +17,7 @@ def save_model(neural_model):
     # later...
 
 
-def load_model():
+def load_model():  # load json to CNN model
     # load json and create model
     json_file = open('model.json', 'r')
     loaded_model_json = json_file.read()
@@ -29,7 +29,7 @@ def load_model():
     return loaded_model
 
 
-def predict(filepath, model=None):
+def predict(filepath, model=None):  # predict english word based CNN
     sample = wav2mfcc(filepath)
     feature_dim_1, feature_dim_2, channel = 20, 11, 1
     sample_reshaped = sample.reshape(1, feature_dim_1, feature_dim_2, channel)
@@ -38,6 +38,7 @@ def predict(filepath, model=None):
     ]
 
 
-model = load_model()
-print("after loading, predicted word:",
-      predict('./data/eight/0b77ee66_nohash_0.wav', model=model))
+if __name__ == '__main__':
+    model = load_model()
+    print("after loading, predicted word:",
+          predict('./data/cat/0b09edd3_nohash_0.wav', model=model))

@@ -38,7 +38,7 @@ y_train_hot = to_categorical(y_train)
 y_test_hot = to_categorical(y_test)
 
 
-def get_model():
+def get_model():  # get CNN model
     model = Sequential()
     model.add(Conv2D(32, kernel_size=(2, 2), activation='relu',
                      input_shape=(feature_dim_1, feature_dim_2, channel)))
