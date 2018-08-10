@@ -16,7 +16,7 @@ feature_dim_2 = 11
 DATA_PATH = './data/training/'
 
 # Save data to array file first
-save_data_to_array(max_len=feature_dim_2)
+# save_data_to_array(max_len=feature_dim_2)
 
 # # Loading train set and test set
 X_train, X_test, y_train, y_test = get_train_test()
@@ -67,4 +67,4 @@ print("before saving, predicted word:",
 save_model(model)
 loaded = load_model()
 print("after saving and loading, predicted word:",
-      predict('./data/training/0bde966a_nohash_0.wav', model=model))
+      predict('./data/training/four/0bde966a_nohash_0.wav', model=loaded))
