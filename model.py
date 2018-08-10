@@ -13,10 +13,10 @@ from preprocess import save_data_to_array
 
 # Second dimension of the feature is dim2
 feature_dim_2 = 11
-DATA_PATH = './data/'  # 앞에 . 추가함
+DATA_PATH = './data/training/'
 
 # Save data to array file first
-# save_data_to_array(max_len=feature_dim_2)
+save_data_to_array(max_len=feature_dim_2)
 
 # # Loading train set and test set
 X_train, X_test, y_train, y_test = get_train_test()
@@ -24,7 +24,7 @@ X_train, X_test, y_train, y_test = get_train_test()
 # # Feature dimension
 feature_dim_1 = 20
 channel = 1
-epochs = 30
+epochs = 50
 batch_size = 100
 verbose = 1
 num_classes = 30
@@ -63,8 +63,8 @@ model.fit(X_train, y_train_hot, batch_size=batch_size, epochs=epochs,
           verbose=verbose, validation_data=(X_test, y_test_hot))
 
 print("before saving, predicted word:",
-      predict('./data/four/1a9afd33_nohash_1.wav', model=model))
+      predict('./data/training/four/0bde966a_nohash_0.wav', model=model))
 save_model(model)
 loaded = load_model()
 print("after saving and loading, predicted word:",
-      predict('./data/four/1a9afd33_nohash_1.wav', model=model))
+      predict('./data/training/0bde966a_nohash_0.wav', model=model))

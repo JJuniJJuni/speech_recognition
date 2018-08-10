@@ -10,7 +10,7 @@ from sklearn.model_selection import train_test_split
 
 from tqdm import tqdm
 
-DATA_PATH = "./data/"
+DATA_PATH = "./data/training/"
 
 
 # Input: Folder Path

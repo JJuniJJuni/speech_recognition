@@ -41,4 +41,4 @@ def predict(filepath, model=None):  # predict english word based CNN
 if __name__ == '__main__':
     model = load_model()
     print("after loading, predicted word:",
-          predict('./data/cat/0b09edd3_nohash_0.wav', model=model))
+          predict('./data/training/cat/0c5027de_nohash_0.wav', model=model))
