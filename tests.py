@@ -1,5 +1,5 @@
-import unittest
 import os
+import unittest
 
 TEST_PATH = './data/test/'
 
@@ -12,4 +12,3 @@ class TestAccuracy(unittest.TestCase):
     def test_can_get_label_counts(self):
         sounds = os.listdir(TEST_PATH + '/bed')
         self.assertEqual(len(sounds), 395)
-
